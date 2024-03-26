@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Ordering System</title>
+</head>
+<body>
+  <h1>Restaurant Ordering System</h1>
+
+  <!-- Dropdown for choosing a dish -->
+  <select id="dishSelect">
+    <option value="dish1">Dish 1 - $10</option>
+    <option value="dish2">Dish 2 - $15</option>
+    <option value="dish3">Dish 3 - $12</option>
+  </select>
+
+  <!-- Dropdown for choosing a table -->
+  <select id="tableSelect">
+    <option value="table1">Table 1</option>
+    <option value="table2">Table 2</option>
+    <option value="table3">Table 3</option>
+  </select>
+
+  <!-- Button to add selected dish to the bill -->
+  <button onclick="addToBill()">Add to Bill</button>
+
+  <!-- Placeholder for displaying orders -->
+  <div id="orders"></div>
+
+  <script>
+    // Function to add selected dish to the bill
+    function addToBill() {
+      const selectedDish = document.getElementById('dishSelect').value;
+      const selectedTable = document.getElementById('tableSelect').value;
+      const price = getPrice(selectedDish); // Assuming getPrice is a function to fetch price from the server
+      const order = `${selectedDish} - ${price}, Table ${selectedTable}`;
+      document.getElementById('orders').innerHTML += `<p>${order}</p>`;
+    }
+
+    // Function to fetch price from the server (dummy implementation)
+    function getPrice(dish) {
+      // Dummy prices
+      const prices = {
+        dish1: 10,
+        dish2: 15,
+        dish3: 12
+      };
+      return prices[dish];
+    }
+  </script>
+</body>
+</html>
